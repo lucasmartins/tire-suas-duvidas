@@ -2,7 +2,6 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.json
   def index
-    @badges = []
     @badges = Badge.all
     
     respond_to do |format|
