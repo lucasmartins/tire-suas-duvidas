@@ -1,4 +1,7 @@
 RailsNaPraiaDuvidas::Application.routes.draw do
+  resources :badges
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
