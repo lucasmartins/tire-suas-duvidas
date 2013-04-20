@@ -2,8 +2,9 @@ class BadgesController < ApplicationController
   # GET /badges
   # GET /badges.json
   def index
+    @badges = []
     @badges = Badge.all
-    @badges = [] if @badges==nil
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @badges }

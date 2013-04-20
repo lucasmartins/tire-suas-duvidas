@@ -5,7 +5,6 @@
 <table class="table table-striped">
   <thead>
     <tr>
-      <th><%= model_class.human_attribute_name(:id) %></th>
       <th><%= model_class.human_attribute_name(:name) %></th>
       <th><%= model_class.human_attribute_name(:logo) %></th>
       <th><%= model_class.human_attribute_name(:rule) %></th>
@@ -16,9 +15,8 @@
   <tbody>
     <% @badges.each do |badge| %>
       <tr>
-        <td><%= link_to badge.id, badge_path(badge) %></td>
-        <td><%= badge.name %></td>
-        <td><%= badge.logo %></td>
+        <td><%= link_to badge.name, badge_path(badge) %></td>
+        <td><img src="<%= badge.logo %>" height="100" width="100"></td>
         <td><%= badge.rule %></td>
         <td><%=l(badge.created_at) if badge.created_at!=nil %></td>
         <td>
