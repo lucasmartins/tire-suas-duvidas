@@ -1,0 +1,26 @@
+production:
+  sessions:
+    default:
+      database: railsnapraia_duvidas
+      username: railsnapraia
+      password: 70d80d2cd16ef73bb83227ed55a3f69b
+      hosts:
+        - dharma.mongohq.com:10018
+development:
+  sessions:
+    default:
+      database: railsnapraia_duvidas
+      hosts:
+        - localhost:27017
+test:
+  sessions:
+    default:
+      database: rails_na_praia_duvidas_test
+      hosts:
+        - localhost:27017
+      options:
+        consistency: :strong
+        # In the test environment we lower the retries and retry interval to
+        # low amounts for fast failures.
+        max_retries: 1
+        retry_interval: 0
