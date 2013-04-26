@@ -6,11 +6,5 @@ class ApplicationController < ActionController::Base
   end
   helper_method :current_user
 
-  def index
-    if current_user==nil
-      redirect_to '/auth/github'
-      return
-    end
-    render :text=>"Logged as #{current_user.email}"
-  end
+  
 end

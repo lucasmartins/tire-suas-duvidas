@@ -44,12 +44,14 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <a class="brand" href="#">RailsNaPraiaDuvidas</a>
+          <a class="brand" href="#">Tire suas Dúvidas</a>
           <div class="container-fluid nav-collapse">
             <ul class="nav">
-              <li><%= link_to "Link1", "/path1"  %></li>
-              <li><%= link_to "Link2", "/path2"  %></li>
-              <li><%= link_to "Link3", "/path3"  %></li>
+              <li><%= link_to "Home", "/"  %></li>
+              <li><%= link_to "Postar Pergunta", new_question_path  %></li>
+              <% if current_user != nil%>
+                <li><%= link_to "(#{current_user.email}) Sair", "/signout"  %></li>
+              <% end %>
             </ul>
           </div><!--/.nav-collapse -->
         </div>

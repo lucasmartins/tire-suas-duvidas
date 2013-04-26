@@ -15,6 +15,10 @@ class OmniAuthGithub
     @auth['info']['email']
   end
 
+  def image
+    @auth['info']['image']
+  end
+
   def gender
     begin
       gender = @auth['info']['gender']

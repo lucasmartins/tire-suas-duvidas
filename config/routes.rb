@@ -1,14 +1,14 @@
 RailsNaPraiaDuvidas::Application.routes.draw do
   resources :answers
-
-
   resources :questions
-
+  resources :badges
 
   get "home/index"
+  match 'login', to: 'sessions#login'
+  match 'auth/:provider/callback', to: 'sessions#create'
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: 'sessions#destroy', as: 'signout'
 
-  resources :badges
- 
   root :to => 'home#index'
 
 end
