@@ -25,6 +25,7 @@ class AnswersController < ApplicationController
   # GET /answers/new.json
   def new
     @answer = Answer.new
+    @answer.question_id = session[:question_id] = params[:question_id]
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,10 +42,13 @@ class AnswersController < ApplicationController
   # POST /answers.json
   def create
     @answer = Answer.new(params[:answer])
+    @answer.question_id = session[:question_id]
+    @answer.user = current_user
 
     respond_to do |format|
       if @answer.save
-        format.html { redirect_to @answer, notice: 'Answer was successfully created.' }
+        session[:question_id]=nil
+        format.html { redirect_to @answer.question, notice: 'Resposta criada com sucesso!' }
         format.json { render json: @answer, status: :created, location: @answer }
       else
         format.html { render action: "new" }

@@ -5,6 +5,7 @@ RailsNaPraiaDuvidas::Application.routes.draw do
 
   get "home/index"
   match 'users/:user_id', to: 'users#index'
+  match 'answers/:question_id/new', to: 'answers#new'
 
   match 'login', to: 'home#login'
   match 'login/:provider', to: 'sessions#login'

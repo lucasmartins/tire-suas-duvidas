@@ -5,7 +5,11 @@ class SessionsController < ApplicationController
     Rails.logger.info "\n====================================\n"
     user = User.from_omniauth(env["omniauth.auth"])
     session[:user_id] = user.id
-    redirect_to '/'
+    if session[:question_id]!=nil
+      redirect_to question_path(session[:question_id])
+    else
+      redirect_to '/'
+    end
   end
 
   def destroy

@@ -1,24 +1,40 @@
 <%- model_class = Question -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+  <h1><%= @question.title %></h1>
 </div>
 
-<dl class="dl-horizontal">
-  
-  <dt><strong><%= model_class.human_attribute_name(:title) %>:</strong></dt>
-  <dd><%= @question.title %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:content) %>:</strong></dt>
-  <dd><%= @question.content %></dd>
-</dl>
+<div class="img-polaroid">
+  <%= @question.content %>
+</div>
+
+<style type="text/css">
+  .answer-content {
+    padding-top: 1em;
+  }
+</style>
+
+<% @question.answers.each do |a|%>
+  <br><br>
+  <img src="<%=a.user.image_url%>" class="img-polaroid">
+  <div>vote</div>
+  <div class="img-polaroid">
+    <div class="answer-content">
+      <%= a.content %>
+    </div>
+  </div>
+<% end%>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              questions_path, :class => 'btn'  %>
-  <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_question_path(@question), :class => 'btn' %>
-  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-              question_path(@question),
-              :method => 'delete',
-              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
-              :class => 'btn btn-danger' %>
+  <% if current_user!=nil && @question.user.id==current_user.id%>
+    <%= link_to 'Responder',"/answers/#{@question.id}/new", :class => 'btn btn-success'  %>
+    <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                edit_question_path(@question), :class => 'btn' %>
+    <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                question_path(@question),
+                :method => 'delete',
+                :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                :class => 'btn btn-danger' %>
+  <% else %>
+    <%= link_to 'Responder',"/login?question_id=#{@question.id}", :class => 'btn'  %>
+  <% end %>
 </div>

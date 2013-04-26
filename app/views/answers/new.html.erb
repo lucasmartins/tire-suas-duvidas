@@ -1,6 +1,5 @@
 <%- model_class = Answer -%>
 <div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.new', :model => model_class.model_name.human,
-                                 :default => "Nova Pergunta") %></h1>
+  <h3>Respondendo: "<%= @answer.question.title%>"</h3>
 </div>
 <%= render :partial => 'form' %>
