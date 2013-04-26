@@ -15,10 +15,10 @@ class SessionsController < ApplicationController
 
   def login
     if current_user==nil
-      redirect_to '/auth/github'
+      redirect_to "/auth/#{params[:provider]}"
       return
     end
     redirect_to '/'
   end
-  
+
 end

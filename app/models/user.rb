@@ -8,8 +8,11 @@ class User
   field :name, type: String
   field :email, type: String
   field :gender, type: String
+  field :image_url, type: String
   
   has_many :providers
+  has_many :questions
+  has_many :answers
 
   validates :email, :presence => true
 
@@ -40,6 +43,7 @@ class User
 
     user.name = @oauth.name
     user.gender = @oauth.gender
+    user.image_url = @oauth.image
     if user.email==nil || user.email==''
       user.email = @oauth.email
     end

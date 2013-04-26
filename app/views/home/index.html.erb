@@ -1,2 +1,24 @@
-<h1>Home#index</h1>
-<p>Find me in app/views/home/index.html.erb</p>
+<h1>Dúvidas</h1>
+
+<table id="questions" class='table table-stripped'>
+  <tr>
+    <th>Quando</th>
+    <th>Título</th>
+    <th>Usuário</th>
+    <th>Hits</th>
+    <th>Respostas</th>
+  </tr>
+  <% counter = 1%>
+  <% @questions.each do |q|%>
+    <tr id="question_<%=counter%>" class="question" data="<%= q.id%>">
+      <td><%= l q.created_at,:format => :short %></td>
+      <td><%= link_to q.title,question_path(q.id) %></td>
+      <td><%= link_to q.user.name,'/users/'+q.user.id %></td>
+      <td><%= q.hits.to_i %></td>
+      <td><%= q.answers.count %></td>
+    </tr>
+  <% counter+=1%>
+  <% end %>
+  
+</table>
+

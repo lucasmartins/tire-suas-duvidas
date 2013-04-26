@@ -4,7 +4,10 @@ RailsNaPraiaDuvidas::Application.routes.draw do
   resources :badges
 
   get "home/index"
-  match 'login', to: 'sessions#login'
+  match 'users/:user_id', to: 'users#index'
+
+  match 'login', to: 'home#login'
+  match 'login/:provider', to: 'sessions#login'
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'

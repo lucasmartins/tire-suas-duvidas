@@ -48,9 +48,12 @@
           <div class="container-fluid nav-collapse">
             <ul class="nav">
               <li><%= link_to "Home", "/"  %></li>
-              <li><%= link_to "Postar Pergunta", new_question_path  %></li>
+              
               <% if current_user != nil%>
+                <li><%= link_to "Postar Pergunta", new_question_path  %></li>
                 <li><%= link_to "(#{current_user.email}) Sair", "/signout"  %></li>
+              <% else %>
+                <li><%= link_to "Postar Pergunta", '/login'  %></li>
               <% end %>
             </ul>
           </div><!--/.nav-collapse -->
