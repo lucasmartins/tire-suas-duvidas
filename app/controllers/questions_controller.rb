@@ -1,4 +1,12 @@
 class QuestionsController < ApplicationController
+  def hits
+    @json = []
+    Question.all.each do |q|
+      @json.push({:id => q.id.to_s, :hits => q.hits})
+    end
+
+    render :layout => false, :json => @json
+  end
   # GET /questions
   # GET /questions.json
   def index

@@ -7,10 +7,11 @@ RailsNaPraiaDuvidas::Application.routes.draw do
   match 'users/:user_id', to: 'users#index'
   match 'answers/:question_id/new', to: 'answers#new'
   match 'vote/:answer_id/:type', to: 'answers#vote'
+  match 'hits', to: 'questions#hits'
 
   match 'login', to: 'home#login'
   match 'login/:provider', to: 'sessions#login'
-  
+
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'
