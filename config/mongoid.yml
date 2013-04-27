@@ -3,7 +3,7 @@ production:
     default:
       database: railsnapraia_duvidas
       username: railsnapraia
-      password: 70d80d2cd16ef73bb83227ed55a3f69b
+      password: railsnapraia
       hosts:
         - dharma.mongohq.com:10018
 development:
