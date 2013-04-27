@@ -1,4 +1,18 @@
 class AnswersController < ApplicationController
+  def vote
+    type = params[:type] # up/down
+    answer = Answer.find(params[:answer_id])
+    if type=='up'
+      answer.vote(current_user,:up)
+    elsif type=='down'
+      answer.vote(current_user,:down)
+    else
+      render :text => 'Unknown vote type, use "up" or "down"'
+      return
+    end
+    render :text => "#{answer.vote_balance}"
+  end
+
   # GET /answers
   # GET /answers.json
   def index

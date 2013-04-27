@@ -2,20 +2,22 @@
 
 <table id="questions" class='table table-stripped'>
   <tr>
-    <th>Quando</th>
+    <th>Votos</th>
+    <th>Respostas</th>
+    <th>Hits</th>
     <th>Título</th>
     <th>Usuário</th>
-    <th>Hits</th>
-    <th>Respostas</th>
+    <th>Quando</th>
   </tr>
   <% counter = 1%>
   <% @questions.each do |q|%>
     <tr id="question_<%=counter%>" class="question" data="<%= q.id%>">
-      <td><%= l q.created_at,:format => :short %></td>
+      <td><%= q.votes %></td>
+      <td><%= q.answers.count %></td>
+      <td><%= q.hits.to_i %></td>
       <td><%= link_to q.title,question_path(q.id) %></td>
       <td><%= link_to q.user.name,'/users/'+q.user.id %></td>
-      <td><%= q.hits.to_i %></td>
-      <td><%= q.answers.count %></td>
+      <td><%= l q.created_at,:format => :short %></td>
     </tr>
   <% counter+=1%>
   <% end %>

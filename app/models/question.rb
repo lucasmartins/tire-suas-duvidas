@@ -17,4 +17,12 @@ class Question
     self.hits+=1
     save
   end
+
+  def votes
+    votes = 0
+    self.answers.each do |a|
+      votes += a.votes.count
+    end
+    return votes
+  end
 end

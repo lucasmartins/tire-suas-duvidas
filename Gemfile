@@ -7,6 +7,9 @@ gem 'mongoid'
 gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'jquery-rails'
+gem 'mongoid_taggable'
+gem 'pygments.rb'
+gem 'redcarpet'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
