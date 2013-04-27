@@ -9,6 +9,7 @@ module ApplicationHelper
   end
 
   def markdown(text)
+=begin    
     renderer = HTMLwithPygments.new(hard_wrap: true, filter_html: true)
     options = {
       autolink: true,
@@ -19,5 +20,9 @@ module ApplicationHelper
       superscript: true
     }
     Redcarpet::Markdown.new(renderer, options).render(text).html_safe
+=end
+    doc = Maruku.new(text)
+    return doc.to_html
   end
+
 end

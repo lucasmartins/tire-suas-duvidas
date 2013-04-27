@@ -10,6 +10,7 @@ RailsNaPraiaDuvidas::Application.routes.draw do
 
   match 'login', to: 'home#login'
   match 'login/:provider', to: 'sessions#login'
+  
   match 'auth/:provider/callback', to: 'sessions#create'
   match 'auth/failure', to: redirect('/')
   match 'signout', to: 'sessions#destroy', as: 'signout'

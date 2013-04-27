@@ -12,6 +12,7 @@ gem 'jquery-rails'
 gem 'mongoid_taggable'
 gem 'pygments.rb'
 gem 'redcarpet'
+gem 'maruku'
 
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'

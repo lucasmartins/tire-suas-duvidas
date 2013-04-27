@@ -5,7 +5,7 @@
     <%= @question.title %>
   </h1>
   <div class="img-polaroid question-content">
-    <%= markdown @question.content %>
+    <%= raw markdown(@question.content) %>
   </div>
 </div>
 
@@ -34,7 +34,7 @@
   </div>
   <div class="img-polaroid">
     <div class="answer-content">
-      <%= markdown a.content %>
+      <%= raw markdown(a.content) %>
     </div>
   </div>
   <br>
